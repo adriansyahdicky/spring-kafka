@@ -49,7 +49,7 @@ public class KafkaConfig {
         configMap.put(schemaRegistryUrlKey, schemaRegistryUrl);
         configMap.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configMap.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-        configMap.put(ConsumerConfig.GROUP_ID_CONFIG, "danafix");
+        configMap.put(ConsumerConfig.GROUP_ID_CONFIG, "kafka-test");
         configMap.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
         return new DefaultKafkaConsumerFactory<>(configMap);
     }
