@@ -12,6 +12,7 @@ import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 @Slf4j
 @Service
@@ -30,9 +31,10 @@ public class KafkaService {
                         .address("JAKARTA")
                         .mobilePhone("08333333333")
                         .build();
-        ListenableFuture<SendResult<String, Object>> kafkaResultFuture =
+        CompletableFuture<SendResult<String, Object>> kafkaResultFuture =
                 kafkaTemplate.send(TOPIC_NAME, kafkaDto);
-        addCallback(kafkaDto, kafkaResultFuture);
+        addCallback(kafkaDto, (ListenableFuture<SendResult<String, Object>>) kafkaResultFuture);
+        log.info("kafkaDto --> {}", kafkaDto);
     }
 
 
